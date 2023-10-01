@@ -1,22 +1,57 @@
 #include <stdio.h>
 
 int main() {
-    int dni=0, comp, i, j;
+    int dni=0, comp, j, i;
     char letter;
     printf("Calculadora de letra del DNI\n----------\n");
+    // ---------- Take 1 ----------
     // do {
     //     printf("Introduzca el DNI (Sin letra): ");
     //     scanf("%i", &dni);
-    //     fflush(stdin);
     // } while (dni > 99999999);
-    for(i=0, j=10000000; i < 8 ; i++){
-        do{
-            printf("Introduzca la posicion %i del DNI: ", i+1);
-            scanf("%i", &comp);
-        } while (comp > 9);
-        dni += j*comp;
-        j/=10;
-    }
+    // ---------- Take 2 ----------
+    // for(i=0, j=10000000; i < 8 ; i++){
+    //     do{
+    //         printf("Introduzca la posicion %i del DNI: ", i+1);
+    //         scanf("%i", &comp);
+    //     } while (comp > 9);
+    //     dni += j*comp;
+    //     j/=10;
+    // }
+    // ---------- Take 3 ----------
+    j = 10000000;
+    i = 1;
+    printf("Introduzca la posicion %i del DNI: ", i);
+    scanf("%i", &comp);
+    dni += j*comp;
+    j/=10; i++;
+    printf("Introduzca la posicion %i del DNI: ", i);
+    scanf("%i", &comp);
+    dni += j*comp;
+    j/=10; i++;
+    printf("Introduzca la posicion %i del DNI: ", i);
+    scanf("%i", &comp);
+    dni += j*comp;
+    j/=10; i++;
+    printf("Introduzca la posicion %i del DNI: ", i);
+    scanf("%i", &comp);
+    dni += j*comp;
+    j/=10; i++;
+    printf("Introduzca la posicion %i del DNI: ", i);
+    scanf("%i", &comp);
+    dni += j*comp;
+    j/=10; i++;
+    printf("Introduzca la posicion %i del DNI: ", i);
+    scanf("%i", &comp);
+    dni += j*comp;
+    j/=10; i++;
+    printf("Introduzca la posicion %i del DNI: ", i);
+    scanf("%i", &comp);
+    dni += j*comp;
+    j/=10; i++;
+    printf("Introduzca la posicion %i del DNI: ", i);
+    scanf("%i", &comp);
+    dni += j*comp;
     comp = dni % 23;
     switch (comp) {
         case 0: letter = 'T';break;
