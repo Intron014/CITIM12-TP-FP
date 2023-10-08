@@ -18,10 +18,12 @@ int main() {
                 j /= 10;
             }
             if (ans == 2) {
-                do {
-                    printf("Introduzca su letra a verificar: ");
-                    scanf(" %c", &letteruser);
-                } while (letteruser < 'A' || letteruser > 'Z');
+                printf("Introduzca su letra a verificar: ");
+                scanf(" %c", &letteruser);
+                if(letteruser > 'a' && letteruser < 'z'){
+                    letteruser -= 'a';
+                    letteruser += 'A';
+                }
             }
             comp = dni % 23;
             switch (comp) {
