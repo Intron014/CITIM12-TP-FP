@@ -36,17 +36,19 @@ void scan_letra (char *letteruser){
     }
 }
 
-void scan_dig(char *smth, unsigned smthelse){ // ?!?
-    printf("IDK");
+void scan_dig(char *number, unsigned pos){
+    printf("Introduzca la posicion %i del DNI: ", pos);
+    scanf(" %c", number);
 }
 
 void scan_DNI(unsigned *dni){
     *dni = 0;
     int i, j, comp;
+    char dgt;
     for (i = 1, j = 10000000; i < 9; i++) {
         do {
-            printf("Introduzca la posicion %i del DNI: ", i);
-            scanf(" %u", &comp);
+            scan_dig(&dgt, i);
+            comp = (dgt - '0');
         } while (comp < 0 || comp > 9);
         *dni += j * comp;
         j /= 10;
