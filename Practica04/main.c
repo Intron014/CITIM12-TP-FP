@@ -76,7 +76,7 @@ void scan_letra (char *letteruser){
 
 char letra_calculada (unsigned dni){
     dni = resto_DNI(dni);
-    char letter[23] = "TRWAGMYFPDXBNJZSQVHLCKE";
+    char letter[23] = {'T','R','W','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E'};
     return letter[dni];
 }
 
