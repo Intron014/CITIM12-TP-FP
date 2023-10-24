@@ -35,7 +35,7 @@ void calcular_frecuencias (char dnilets[N], unsigned causality[26], float frecs[
         causality[cletter-'A']++;
     }
     for(int i=0 ; i<26 ; i++){
-        frecs[i] = (float)causality[i]/100;
+        frecs[i] = (float)causality[i]/N;
     }
 }
 void print_frecuencias(unsigned causality[26], float frecs[26]){
