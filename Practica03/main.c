@@ -13,6 +13,9 @@ int main() {
     unsigned dni;
     print_menu();
     scan_opcion(&ans);
+    if(ans == '0'){
+        return 0;
+    }
     scan_DNI(&dni);
     letter=letra_calculada(dni);
     if(ans == '2'){
