@@ -3,11 +3,9 @@
 #include <stdlib.h> // srand(), rand()
 #define N 100
 
-//prototipos usados en practicas anteriores
 unsigned resto_DNI(unsigned );
 char letra_calculada(unsigned );
 
-//prototipos de esta práctica
 void rand_dig (char *);
 void rand_DNI (unsigned *);
 void rand_DNIs (unsigned [N], char [N]);
@@ -18,7 +16,7 @@ void print_barra (float);
 
 int main() {
     srand(time(NULL));
-    float frecuencias[26] = {0.0};
+    float frecuencias[26];
     unsigned causality[26] = {0};
     unsigned dninums[N];
     char dnilets[N];
@@ -26,7 +24,6 @@ int main() {
     calcular_frecuencias(dnilets, causality, frecuencias);
     print_DNIs(dninums, dnilets);
     print_frecuencias(causality, frecuencias);
-
 }
 void calcular_frecuencias (char dnilets[N], unsigned causality[26], float frecs[26]){
     char cletter;
@@ -39,7 +36,7 @@ void calcular_frecuencias (char dnilets[N], unsigned causality[26], float frecs[
     }
 }
 void print_frecuencias(unsigned causality[26], float frecs[26]){
-    printf(" > Frecuencias\n");
+    printf("> Frecuencias\n");
     for(int i=0 ; i<26; i++){
         printf("%c\t%u\t%f\t", 'A'+i, causality[i], frecs[i]);
         print_barra(frecs[i]);
@@ -47,7 +44,7 @@ void print_frecuencias(unsigned causality[26], float frecs[26]){
     }
 }
 void print_DNIs (unsigned dninums[N], char dnilets[N]){
-    printf(" > DNIs Generados\n");
+    printf("> DNIs Generados\n");
     for(int i=0 ; i<N ; i++){
         printf("%u - %c\t\t", dninums[i], dnilets[i]);
     }
@@ -73,7 +70,7 @@ void rand_dig(char *num)
 }
 void rand_DNI (unsigned *dni){
     *dni = 0;
-    int i, j, comp;
+    int i, j;
     char dgt;
     for (i = 1, j = 10000000; i < 9; i++) {
         do {
