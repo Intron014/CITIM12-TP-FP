@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-
 void scan_dig(char * , unsigned );
 void scan_DNI(unsigned *);
 unsigned resto_DNI(unsigned );
@@ -43,7 +42,7 @@ int main() {
 }
 
 void scan_dig (char *number, unsigned pos){
-    printf("Intoduzca la posicion %i del dni: ", pos);
+    printf("Introduzca la posicion %i del dni: ", pos);
     scanf(" %c", number);
 }
 
