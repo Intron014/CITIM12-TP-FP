@@ -12,10 +12,10 @@ int main() {
     int *ans;
     unsigned *dni;
     char *letter, *letteruser;
-    ans = malloc(sizeof(int));
-    dni = malloc(sizeof(unsigned));
-    letter = malloc(sizeof(char));
-    letteruser = malloc(sizeof(char));
+    ans = (int *)malloc(sizeof(int));
+    dni = (unsigned *)malloc(sizeof(unsigned));
+    letter = (char *)malloc(sizeof(char));
+    letteruser = (char *)malloc(sizeof(char));
     do {
         printf("\n1 - Calculo de letra\n2 - Check letra\n> ");
         scanf(" %i", ans);
