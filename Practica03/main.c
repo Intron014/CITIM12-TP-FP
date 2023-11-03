@@ -28,6 +28,7 @@ int main() {
     } else {
         printf("> DNI: %i\n> restoDNI: %i\n> %i%c", dni, dni % 23, dni, letter);
     }
+    return 0;
 }
 
 void scan_letra (char *letteruser){
