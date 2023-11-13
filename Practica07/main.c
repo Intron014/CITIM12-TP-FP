@@ -4,9 +4,11 @@
 #include <time.h>
 #define N 100
 
-void print_strings_DNIs(char [N][9+1]);
-void rand_strings_DNIs(char [N][9+1]);
-void rand_str_DNI(char [9+1]);
+
+void rand_dig (char *);
+void rand_DNI (unsigned *);
+void rand_DNIs (unsigned [N], char [N]);
+void print_DNIs (unsigned [N], char [N]);
 
 void swap_unsigned(unsigned*, unsigned*);
 void swap_char(char*, char*);
@@ -15,34 +17,75 @@ void bubbleSort(unsigned [N], char [N]);
 int main() {
     printf("Initializing...\n");
     srand(time(NULL));
-    char dnises[N][9+1];
-    rand_strings_DNIs(dnises);
+    unsigned dninums[N];
+    char dnilets[N];
+    rand_DNIs(dninums, dnilets);
+    print_DNIs(dninums, dnilets);
+    bubbleSort(dninums, dnilets);
+    print_DNIs(dninums, dnilets);
     return 0;
 }
 
-
-void print_strings_DNIs(char le_dnis[N][9+1]){
-    for (int i = 0 ; i<N ; i++)
-        printf("%s\t", le_dnis[i]);
+void bubbleSort(unsigned DNIs[N], char letter[N]){
+    int i, j;
+    for (i = 0; i < N-1; i++)
+        for (j = 0; j < N-i-1; j++)
+            if (DNIs[j] > DNIs[j+1]){
+                swap_unsigned(&DNIs[j], &DNIs[j+1]);
+                swap_char(&letter[j], &letter[j+1]);
+            }
 }
-void rand_str_DNI(char dni[9+1]){
-    int dig;
-    int pos;
-    int dni_num;
+
+void swap_unsigned(unsigned *a, unsigned *b){
+    unsigned temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void swap_char(char *a, char *b){
+    char temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+char letra_calculada (unsigned dni){
+    dni %= 23;
     char letter[23] = {'T','R','W','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E'};
-    for(pos = 0 ; pos < 8 ; pos++){
-        dig = rand()%10;
-        dig+='0';
-        dni[pos]=(char)dig;
-    }
-    dni_num=strtoul(dni, NULL, 10);
-    dni_num%=23;
-    dni[pos] = letter[dni_num];
-    dni[pos+1] = '\0';
-
+    return letter[dni];
 }
-void rand_strings_DNIs(char dnises[N][9+1]){
-    for(int pos = 0 ; pos < N ; pos++)
-        rand_str_DNI(dnises[pos]);
-    print_strings_DNIs(dnises);
+void print_DNIs (unsigned dninums[N], char dnilets[N]){
+    printf("> DNIs Generados\n");
+    for(int i=0 ; i<N ; i++){
+        printf("%u - %c\t\t", dninums[i], dnilets[i]);
+    }
+    printf("\n");
+}
+void rand_DNIs(unsigned dninums [N], char dnilets[N]){
+    for(int i=0 ; i<N ; i++){
+        rand_DNI(&dninums[i]);
+        dnilets[i] = letra_calculada(dninums[i]);
+    }
+}
+
+void rand_dig(char *num)
+{
+    *num = rand()%10;
+}
+
+void rand_DNI (unsigned *dni){
+    *dni = 0;
+    int i, j;
+    char dgt;
+    for (i = 1, j = 10000000; i < 9; i++) {
+        do {
+            rand_dig(&dgt);
+            if(i == 1 && dgt == 0){
+                do{
+                    rand_dig(&dgt);
+                } while (dgt < 1 || dgt > 9);
+            }
+        } while (dgt < 0 || dgt > 9);
+        *dni += j * dgt;
+        j /= 10;
+    }
 }
