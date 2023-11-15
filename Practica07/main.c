@@ -20,8 +20,10 @@ int main() {
     unsigned dninums[N];
     char dnilets[N];
     rand_DNIs(dninums, dnilets);
+    printf("DNIs Generados\n");
     print_DNIs(dninums, dnilets);
     bubbleSort(dninums, dnilets);
+    printf("DNIs Ordenados (Con Bubble Sort, ineficiente pero didactico)\n");
     print_DNIs(dninums, dnilets);
     return 0;
 }
@@ -54,7 +56,6 @@ char letra_calculada (unsigned dni){
     return letter[dni];
 }
 void print_DNIs (unsigned dninums[N], char dnilets[N]){
-    printf("> DNIs Generados\n");
     for(int i=0 ; i<N ; i++){
         printf("%u - %c\t\t", dninums[i], dnilets[i]);
     }
